@@ -78,4 +78,27 @@ const nav = document.querySelector(".nav"),
         for(i=0; i<totalSection; i++){
             allSection[i].classList.toggle("open");   
         }
+
      }
+
+
+function calculateAge() {
+    // Your DOB → Year, Month (0-11), Day
+    const birthDate = new Date(2004, 3, 27); // April = 3
+
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    // If birthday not reached this year, reduce age
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    document.getElementById("age").textContent = age;
+}
+
+// Run when page loads
+calculateAge();
